@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PRIMARY_COLOR, SECONDARY_COLOR } from "../scripts/colors.ts";
+import { PRIMARY_COLOR, SECONDARY_COLOR } from "../../scripts/colors.ts";
 
 import SignIn from "./Components/SignIn";
 import SignUp from "./Components/SignUp";

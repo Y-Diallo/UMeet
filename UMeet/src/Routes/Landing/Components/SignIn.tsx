@@ -22,16 +22,16 @@ function SignIn() {
   };
 
   return (
-    <form maxW={"25vw"} w={"20em"} m={"2em"} onSubmit={handleSignIn}>
-      <label color={PRIMARY_COLOR}>
+    <form style={{maxWidth:"25vw", width:"20em", margin:"2em"}} onSubmit={handleSignIn}>
+      <label style={{color:PRIMARY_COLOR}}>
         Email:
-        <input color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+        <input style={{color:SECONDARY_COLOR, backgroundColor:PRIMARY_COLOR}} type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
       </label>
-      <label color={PRIMARY_COLOR}>
+      <label style={{color:PRIMARY_COLOR}}>
         Password:
-        <input color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+        <input style={{color:SECONDARY_COLOR, backgroundColor:PRIMARY_COLOR}} type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
       </label>
-      <button color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="submit" onClick={handleSignIn}>Sign in</button>
+      <button style={{color:SECONDARY_COLOR, backgroundColor:PRIMARY_COLOR}} type="submit" onClick={handleSignIn}>Sign in</button>
     </form>
   );
 }
