@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../scripts/firebase";
 import { userContext } from '../../../Root';
 
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../scripts/colors.ts';
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../scripts/colors.tsx';
 
 function SignUp() {
   const [email, setEmail] = useState('');
