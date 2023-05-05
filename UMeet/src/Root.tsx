@@ -10,20 +10,18 @@ export const userContext = createContext<{user: any | null, setUser: (user: any 
 
 function Root() {
   const [user, setUser] = useState<any | null>(null);
-  const navigate = useNavigate();
-  if(user == null){
-    const userString = localStorage.getItem("user");
-    if(userString != null){
-      setUser(JSON.parse(userString));
-    }
-    if(userString == null && window.location.pathname != "/"){
-      setUser(null);
-      navigate("/");
-    }
-  }
-  if(user != null){
-    localStorage.setItem("user", JSON.stringify(user));
-  }
+  // if(user == null){
+  //   const userString = localStorage.getItem("user");
+  //   if(userString != null){
+  //     setUser(JSON.parse(userString));
+  //   }
+  //   if(userString == null && window.location.pathname != "/"){
+  //     setUser(null);
+  //   }
+  // }
+  // if(user != null){
+  //   localStorage.setItem("user", JSON.stringify(user));
+  // }
 
     return ( 
     <userContext.Provider value={{user, setUser}}>
