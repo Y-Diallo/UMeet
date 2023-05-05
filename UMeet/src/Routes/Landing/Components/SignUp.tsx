@@ -44,16 +44,16 @@ function SignUp() {
         Email:
         <input color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
       </label>
-      <FormLabel color={PRIMARY_COLOR}>
+      <form color={PRIMARY_COLOR}>
         Password:
-        <Input color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
-      </FormLabel>
-      <FormLabel color={PRIMARY_COLOR}>
+        <input color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+      </label>
+      <label color={PRIMARY_COLOR}>
         Retype Password:
-        <Input color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="password" value={retypePassword} onChange={(event) => setRetypePassword(event.target.value)} />
-      </FormLabel>
-      <Button color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="submit" onClick={handleSignup}>Sign up</Button>
-    </FormControl>
+        <input color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="password" value={retypePassword} onChange={(event) => setRetypePassword(event.target.value)} />
+      </label>
+      <button color={SECONDARY_COLOR} backgroundColor={PRIMARY_COLOR} type="submit" onClick={handleSignup}>Sign up</button>
+    </form>
   );
 }
 

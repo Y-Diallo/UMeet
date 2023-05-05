@@ -1,7 +1,9 @@
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import App from "./App";
 import Example from "./Example";
 import { createContext, useState } from "react";
+import LoginSignUp from "./Routes/Landing/LoginSignUp";
+import Landing from "./Routes/Landing/Landing";
+import Home from "./Routes/Landing/Home";
 
 export const userContext = createContext<{user: any | null, setUser: (user: any | null) => void}>({user: null, setUser: () => {}});
 
