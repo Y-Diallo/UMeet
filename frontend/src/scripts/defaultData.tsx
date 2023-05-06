@@ -22,7 +22,7 @@ export const defaultEvents: EventDetails[] = [
         image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=100",
         date: "May 11, 2023",
         location: "UW2",
-        startDate: new Date("2023-05-11T112:00:00"),
+        startDate: new Date("2023-05-11T12:00:00"),
         endDate: new Date("2023-05-11T16:00:00"),
         description: "Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.",
     },
