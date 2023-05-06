@@ -8,6 +8,7 @@ import Profile from "./Routes/Profile/Profile";
 import Navbar from "./Navbar";
 import FindEvents from "./Routes/Home/FindEvents";
 import EventInformation from "./Routes/EventInformation/EventInformation";
+import Settings from "./Routes/Settings/Settings";
 export const userContext = createContext<{user: any | null, setUser: (user: any | null) => void}>({user: null, setUser: () => {}});
 
 
@@ -46,6 +47,9 @@ function Root() {
           <Route path="/event_details/:eventId" element={
             // user == null? <LoginSignUp/>:
             <EventInformation/>}/>
+          <Route path="/settings" element={
+            // user == null? <LoginSignUp/>:
+            <Settings/>}/>
         </Routes>
       </BrowserRouter>
     </userContext.Provider>

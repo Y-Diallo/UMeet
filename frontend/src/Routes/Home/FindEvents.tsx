@@ -49,7 +49,7 @@ function FindEvents() {
         <h3 className="leading-7 font-sans font-normal mt-8">Event Categories</h3>
 
         <div className="max-w-screen-xl mx-auto mt-3">
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap justify-center">
                 <div className="m-1 flex flex-wrap text-xs sm:text-sm bg-gray-200 rounded-full px-4 py-2 flex-row-reverse">
                 <span className="pl-2">Business</span>
                 <FontAwesomeIcon icon={faBriefcase} />
