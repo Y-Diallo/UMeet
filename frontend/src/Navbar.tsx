@@ -1,8 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faCompass, faTicket, faGear } from '@fortawesome/free-solid-svg-icons'
+
+const navbarPages : string[] = ["home", "search", "events", "settings"];
+
 function Navbar() {
   const page = useLocation().pathname.split('/')[1];
+  if (!navbarPages.includes(page)) {
+    return null;
+  }
   return (
     <nav className="fixed bottom-0 left-0 w-full text-white bg-white">
       <ul className="flex justify-between px-8 py-8">
