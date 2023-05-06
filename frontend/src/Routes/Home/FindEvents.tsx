@@ -1,16 +1,41 @@
 import { faBasketShopping, faBriefcase, faChampagneGlasses, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { defaultEvents } from "../../scripts/defaultData";
 import { EventDetails } from "../../scripts/types";
 import EventCard from "./Components/EventCard";
+import { useParams } from "react-router-dom";
 
 function FindEvents() {
+    const [title, setTitle] = useState<string>("Find Events");
+    const {searchType} = useParams<{searchType: string}>();
     const [eventDetails, setPopularEventDetails] = useState<EventDetails[]>([
         defaultEvents[0],defaultEvents[1],defaultEvents[2],defaultEvents[3]]);
+    
+    useEffect(() => {
+        //scroll to top of page
+        window.scrollTo(0, 0);
+        if (searchType === "nearby") {
+            setTitle("Nearby Events");
+            //pull from nearby events from backend
+        } else if (searchType === "popular") {
+            setTitle("Popular Events");
+            //pull from popular events from backend
+        } else if (searchType === "recommended") {
+            setTitle("Recommended Events");
+            //pull from recommended events from backend
+        } else if (searchType === "joined") {
+            setTitle("Joined Events");
+            //pull from joined events from backend
+        } 
+    }, [searchType]);
+    // else if (searchType === "search") {
+    //     setTitle("Search Results");
+    // }
+
     return (
     <div>
-        <h1 className="text-3xl font-bold">Find Events</h1>
+        <h1 className="text-3xl font-bold">{title}</h1>
         <label className="relative block mt-6">
             <span className="sr-only">Search</span>
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">

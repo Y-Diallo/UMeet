@@ -5,6 +5,7 @@ import PersonalizedHeader from "./Components/PersonalizedHeader";
 import EventCard from "./Components/EventCard";
 import { EventDetails } from "../../scripts/types";
 import { defaultEvents } from "../../scripts/defaultData";
+import EventTypeHeader from "./Components/EventTypeHeader";
 
 function Home() {
     const [name, setName] = useState<string>("Alexander Hoff")
@@ -14,31 +15,22 @@ function Home() {
         defaultEvents[0],defaultEvents[1]]);
     const [recommendedEventDetails, setRecommendedEventDetails] = useState<EventDetails[]>([
         defaultEvents[2],defaultEvents[3]]);
-        
+
     return ( 
         <div className="pb-24">
             <div className="text-left m-0">
                 <PersonalizedHeader name={name} profilePicture={profilePicture} />
-                <div className="flex justify-between">
-                    <h3 className="leading-7 font-sans font-normal mt-3">Joined Events</h3>
-                    <a href="#" className="text-sm text-purple-900 mt-auto">See More</a>
-                </div>
+                <EventTypeHeader name="Joined Events" type="joined"/>
                 {joinedEvents.map((eventDetails, index) => (
                     <EventCard event={eventDetails} />
                 ))}
 
-                <div className="flex justify-between">
-                    <h3 className="leading-7 font-sans font-normal mt-3">Popular Events</h3>
-                    <a href="#" className="text-sm text-purple-900 mt-auto">See More</a>
-                </div>
+                <EventTypeHeader name="Popular Events" type="popular"/>
                 {popularEventDetails.map((eventDetails, index) => (
                     <EventCard event={eventDetails} />
                 ))}
                 
-                <div className="flex justify-between">
-                    <h3 className="leading-7 font-sans font-normal mt-3">Nearby Event</h3>
-                    <a href="#" className="text-sm text-purple-900 mt-auto">See Details</a>
-                </div>
+                <EventTypeHeader name="Nearby Events" type="nearby"/>
                 {recommendedEventDetails.map((eventDetails, index) => (
                     <EventCard event={eventDetails} />
                 ))}
