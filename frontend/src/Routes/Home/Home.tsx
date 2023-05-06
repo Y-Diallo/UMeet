@@ -60,7 +60,6 @@ function Home() {
             className="block rounded-lg p-1 shadow-sm shadow-indigo-100 bg-white shadow-md mt-6 pt-40"
             style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1549092196-6f877d6b54bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1414&q=80')`,
-                height: "28vh", // set the height to full viewport height
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
@@ -103,7 +102,6 @@ function Home() {
             className="block rounded-lg p-1 shadow-sm shadow-indigo-100 bg-white shadow-md mt-6 pt-40"
             style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80')`,
-                height: "28vh", // set the height to full viewport height
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
@@ -153,7 +151,6 @@ function Home() {
             className="block rounded-lg p-1 shadow-sm shadow-indigo-100 bg-white shadow-md mt-6 pt-40"
             style={{
                 backgroundImage: `url('https://media.discordapp.net/attachments/973821179888562276/1104265496670503002/Image_4715.png')`,
-                height: "28vh", // set the height to full viewport height
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
@@ -196,7 +193,6 @@ function Home() {
             className="block rounded-lg p-1 shadow-sm shadow-indigo-100 bg-white shadow-md mt-6 pt-40"
             style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
-                height: "28vh", // set the height to full viewport height
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
