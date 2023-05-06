@@ -6,6 +6,7 @@ import Landing from "./Routes/Landing/Landing";
 import Home from "./Routes/Home/Home";
 import Profile from "./Routes/Profile/Profile";
 import Navbar from "./Navbar";
+import FindEvents from "./Routes/Home/FindEvents";
 export const userContext = createContext<{user: any | null, setUser: (user: any | null) => void}>({user: null, setUser: () => {}});
 
 
@@ -23,7 +24,12 @@ function Root() {
           <Home/>}/>
           <Route path="/search" element={
             // user == null? <LoginSignUp/>:
-            <Example/>}/>
+            <FindEvents/>}/>
+          <Route path="/search/:searchType" element={ 
+            //the idea for this page is basically to have a specialized search for like popular events, or events near you, or events you might like etc.
+            //this is where the See Details buttons on the home page will take you
+            // user == null? <LoginSignUp/>:
+            <FindEvents/>}/>
           <Route path="/profile/:userId" element={
             // user == null? <LoginSignUp/>:
             <Profile/>}/>
