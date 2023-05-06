@@ -3,18 +3,21 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../scripts/firebase';
 import { userContext } from '../../../Root';
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../scripts/colors';
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 	const { user, setUser } = useContext(userContext);
-  
+  const navigate = useNavigate();
+
   const handleSignIn = (event : any) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Handle successful sign-in
 				setUser(userCredential.user);
+        navigate("/home");
       })
       .catch((error) => {
         // Handle errors

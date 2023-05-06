@@ -4,12 +4,14 @@ import { auth } from "../../../scripts/firebase";
 import { userContext } from '../../../Root';
 
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../scripts/colors.tsx';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
 	const { user, setUser } = useContext(userContext);
+  const navigate = useNavigate();
   const handleSignup = (event : any) => {
     event.preventDefault();
 		//passwords must match
@@ -32,6 +34,7 @@ function SignUp() {
       .then((userCredential) => {
         // Handle successful sign-up
 				setUser(userCredential.user);
+        navigate("/home");
       })
       .catch((error) => {
         // Handle errors
