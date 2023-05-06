@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { browserSessionPersistence, createUserWithEmailAndPassword, setPersistence } from "firebase/auth";
 import { auth } from "../../../scripts/firebase";
 import { userContext } from '../../../Root';
 
@@ -29,8 +29,14 @@ function SignUp() {
 			alert("Email must be valid");
 			return;
 		}
-
-    createUserWithEmailAndPassword(auth,email, password)
+    setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+      // Existing and future Auth states are now persisted in the current
+      // session only. Closing the window would clear any existing state even
+      // if a user forgets to sign out.
+      // ...
+      // New sign-in will be persisted with session persistence.
+      return createUserWithEmailAndPassword(auth,email, password)
       .then((userCredential) => {
         // Handle successful sign-up
 				setUser(userCredential.user);
@@ -39,6 +45,13 @@ function SignUp() {
       .catch((error) => {
         // Handle errors
       });
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+    
   };
 
   return (

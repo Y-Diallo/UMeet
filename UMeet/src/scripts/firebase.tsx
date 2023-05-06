@@ -30,3 +30,6 @@ export const analytics = getAnalytics(app);
 export const functions = getFunctions(app);
 // export const createNewEvent = httpsCallable(functions, 'createNewEvent');
 // export const deleteEvent = httpsCallable(functions, 'deleteEvent');
+
+import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
+

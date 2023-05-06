@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../scripts/firebase';
 import { userContext } from '../../../Root';
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../scripts/colors';
@@ -13,7 +13,14 @@ function SignIn() {
 
   const handleSignIn = (event : any) => {
     event.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
+    setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+      // Existing and future Auth states are now persisted in the current
+      // session only. Closing the window would clear any existing state even
+      // if a user forgets to sign out.
+      // ...
+      // New sign-in will be persisted with session persistence.
+      return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Handle successful sign-in
 				setUser(userCredential.user);
@@ -22,6 +29,13 @@ function SignIn() {
       .catch((error) => {
         // Handle errors
       });
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+    
   };
 
   return (
