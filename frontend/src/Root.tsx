@@ -5,7 +5,7 @@ import LoginSignUp from "./Routes/LoginSignUp/LoginSignUp";
 import Landing from "./Routes/Landing/Landing";
 import Home from "./Routes/Home/Home";
 import Profile from "./Routes/Profile/Profile";
-
+import Navbar from "./Navbar";
 export const userContext = createContext<{user: any | null, setUser: (user: any | null) => void}>({user: null, setUser: () => {}});
 
 
@@ -14,6 +14,7 @@ function Root() {
     return ( 
     <userContext.Provider value={{user, setUser}}>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="*" element={<Landing/>}/>
           <Route path="/login" element={<LoginSignUp/>}/>
