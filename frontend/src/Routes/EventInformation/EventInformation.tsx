@@ -2,49 +2,44 @@ import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays,faClock } from '@fortawesome/free-regular-svg-icons';
 import { faChevronLeft, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { defaultEvents } from "../../scripts/defaultData";
+import { EventDetails } from "../../scripts/types";
 
 function EventInformation() {
-    //disha realm straight up
-    const [eventTitle, setEventTitle] = useState("Seattle Art Museum");
-    const [eventDate, setEventDate] = useState("May 15");
-    const [dayTime, setDayTime] = useState("Thursday");
-    const [startTime, setStart] = useState("10:00 AM");
-    const [endTime, setEnd] = useState("to 12:00 PM");
-    const [eventLocation, setEventLocation] = useState("1300 1st Ave, Seattle, WA 98101");
-    const [eventDescription, setEventDescription] = useState("Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.");
-    const [eventId, setEventId] = useState("555");
-    const [eventImage, setEventImage] = useState("https://images.unsplash.com/photo-1583343766731-4410303d8f8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80")
-    const [enrolled, setenrolled] = useState(30);
-    const [maxEnroll, setMaxEnroll] = useState(40);
+    const dateOptions : Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric' };
+    const dayOptions : Intl.DateTimeFormatOptions = { weekday: 'long' };
+    const timeOptions : Intl.DateTimeFormatOptions  = { hour: 'numeric', minute: 'numeric', hour12: true };
+    const [event, setEvent] = useState<EventDetails>(defaultEvents[0]);
+
     return ( 
         <div>
               <div className="overlay absolute inset-0 bg-gray-900 opacity-60"></div>
-            <div style={{backgroundImage: `url(${eventImage})`,backgroundSize: 'cover', backgroundPosition: 'center', width:'100vw'}} className="p-0">
+            <div style={{backgroundImage: `url(${event.image2 != undefined ? event.image2 : event.image})`,backgroundSize: 'cover', backgroundPosition: 'center', width:'100vw'}} className="p-0">
                 <FontAwesomeIcon style={{ zIndex: 10, position: 'absolute', top: '10%', left: '10%', color:'white'}} icon={faChevronLeft} onClick={() => window.history.back()}/>
                 <div className="min-h-screen flex flex-col ">
                     <h2 className="font-semibold text-2xl mt-6 text-left text-white"
                     style={{ zIndex: 10, position: 'absolute', top: '30%', left: '40%', transform: 'translate(-50%, -50%)'}}>
-                    {eventTitle}
+                    {event.title}
                     </h2>
                     <div style={{ zIndex: 10, position: 'absolute', top: '40%', left: '12%', display: 'flex', alignItems: 'center', fontWeight:'bold'}}>
                         <FontAwesomeIcon icon={faCalendarDays} size="lg" className="mr-2 text-white mb-1" />
-                        <h3 style={{ color:'#DEE1E6'}}>{eventDate}</h3>
+                        <h3 style={{ color:'#DEE1E6'}}>{event.startDate.toLocaleDateString(undefined,dateOptions)}</h3>
                     </div>
-                    <h4 style={{ zIndex: 10, position: 'absolute', top: '43.5%', left: '18%', color:'#BCC1CA', fontSize:'14px'}}>{dayTime}</h4>
+                    <h4 style={{ zIndex: 10, position: 'absolute', top: '43.5%', left: '18%', color:'#BCC1CA', fontSize:'14px'}}>{event.startDate.toLocaleDateString(undefined,dayOptions)}</h4>
                 </div>
 
                 <div style={{ zIndex: 10, position: 'absolute', top: '40%', left: '50%', display: 'flex', alignItems: 'center', color:'white', fontWeight:'bold'}}>
                     <FontAwesomeIcon className="mr-3" icon={faClock} />
-                    <h3>{startTime}</h3>
+                    <h3>{event.startDate.toLocaleTimeString(undefined, timeOptions)}</h3>
                 </div>
 
                 <div style={{ zIndex: 10, position: 'absolute', top: '43%', left: '58%', display: 'flex', alignItems: 'center', color:'#DEE1E6'}}>
-                    <h4>{endTime}</h4>
+                    <h4>to {event.endDate.toLocaleTimeString(undefined, timeOptions)}</h4>
                 </div>
 
                 <div style={{ zIndex: 10, position: 'absolute', top: '50%', left: '12%', display: 'flex', alignItems: 'center', textAlign:'left' }}>
                     <FontAwesomeIcon icon={faLocationDot} size="lg" className="mr-2 text-white mb-1" />
-                    <h3 style={{ color:'#DEE1E6', maxWidth: '150px' }}>{eventLocation}</h3>
+                    <h3 style={{ color:'#DEE1E6', maxWidth: '150px' }}>{event.location}</h3>
                 </div>
 
                 <div style={{ zIndex: 10, position: 'absolute', top: '50%', left: '60%', display: 'flex', alignItems: 'center'}}>
@@ -52,11 +47,11 @@ function EventInformation() {
                 </div>
 
                 <div style={{ zIndex: 10, position: 'absolute', top: '60%', left: '12%', display: 'flex', alignItems: 'center', textAlign:'left' }}>
-                    <h3 style={{ color:'#DEE1E6', maxWidth: '300px'}}>{eventDescription}</h3>
+                    <h3 style={{ color:'#DEE1E6', maxWidth: '300px'}}>{event.description}</h3>
                 </div>
 
                 <div style={{ zIndex: 10, position: 'absolute', bottom: '65px', left: '0', width: '100vw', height:'6rem', display: 'flex', alignItems: 'center', backgroundColor: 'white', color: 'grey'}}>
-                    <h4 className="z-10 text-grey mr-5 ml-5">{enrolled}/{maxEnroll}</h4>
+                    <h4 className="z-10 text-grey mr-5 ml-5">{event.attendees}/{event.maxAttendees}</h4>
                     <div className="flex -space-x-2 overflow-hidden">
                         <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
                         <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>

@@ -8,7 +8,11 @@ export const defaultEvents: EventDetails[] = [
         maxAttendees: 20,
         image: "https://images.unsplash.com/photo-1549092196-6f877d6b54bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1414&q=100",
         date: "May 15, 2023",
-        location: "UW1",
+        location: "1300 1st Ave, Seattle, WA 98101",
+        startDate: new Date("2023-05-15T10:00:00"),
+        endDate: new Date("2023-05-15T12:00:00"),
+        description: "Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.",
+        image2: "https://images.unsplash.com/photo-1583343766731-4410303d8f8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=100",
     },
     {
         id: "5670f3b9-bd4a-4ef4-af44-2cd527a3e1c5",
@@ -18,6 +22,9 @@ export const defaultEvents: EventDetails[] = [
         image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=100",
         date: "May 11, 2023",
         location: "UW2",
+        startDate: new Date("2023-05-11T112:00:00"),
+        endDate: new Date("2023-05-11T16:00:00"),
+        description: "Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.",
     },
     {
         id: "20dd0ea0-d770-49a2-8419-aa51f7e66ea1",
@@ -27,6 +34,9 @@ export const defaultEvents: EventDetails[] = [
         image: "https://media.discordapp.net/attachments/973821179888562276/1104265496670503002/Image_4715.png",
         date: "May 10, 2023",
         location: "Library",
+        startDate: new Date("2023-05-10T18:00:00"),
+        endDate: new Date("2023-05-10T22:00:00"),
+        description: "Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.",
     },
     {
         id: "e527085f-4e75-44be-a66e-ecc0d08351fc",
@@ -36,5 +46,8 @@ export const defaultEvents: EventDetails[] = [
         image: "https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=100",
         date: "June 11, 2023",
         location: "Main Court Yard",
+        startDate: new Date("2023-06-11T10:00:00"),
+        endDate: new Date("2023-06-11T12:00:00"),
+        description: "Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.",
     }
 ]

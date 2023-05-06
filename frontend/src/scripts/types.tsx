@@ -4,6 +4,10 @@ export type EventDetails = {
     attendees: number;
     maxAttendees: number;
     image: string;
+    image2?: string;
     date: string;
     location: string;
+    startDate: Date;
+    endDate: Date;
+    description: string;
 }
