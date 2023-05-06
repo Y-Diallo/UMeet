@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Epilogue', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -27,19 +27,18 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+/*body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
+}*/
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
