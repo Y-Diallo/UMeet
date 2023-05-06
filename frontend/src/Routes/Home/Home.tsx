@@ -17,7 +17,7 @@ function Home() {
         defaultEvents[2],defaultEvents[3]]);
 
     return ( 
-        <div className="pb-24">
+        <div className="pb-24 p-8">
             <div className="text-left m-0">
                 <PersonalizedHeader name={name} profilePicture={profilePicture} />
                 <EventTypeHeader name="Joined Events" type="joined"/>
