@@ -34,7 +34,7 @@ function FindEvents() {
     // }
 
     return (
-    <div>
+    <div className="p-8">
         <h1 className="text-3xl font-bold">{title}</h1>
         <label className="relative block mt-6">
             <span className="sr-only">Search</span>

@@ -6,7 +6,7 @@ type PersonalizedHeaderProps = {
 
 function PersonalizedHeader({name, profilePicture}: PersonalizedHeaderProps) {
     return ( 
-        <div className="mb-4 flex items-center">
+        <div className="mb-0 flex items-center">
             <div>
                 <h2 className="font-semibold text-2xl mt-6">Welcome Back</h2>
                 <h3 className="leading-7 font-sans text-purple-900 font-normal">{name}</h3>
