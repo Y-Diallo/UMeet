@@ -41,11 +41,13 @@ function Home() {
         <div className="flex justify-between">
             <h3 className="leading-7 font-sans font-normal mt-3">Popular Events</h3>
             <a href="#" className="text-sm text-purple-900 mt-auto">See More</a>
+            //ADD CARD HERE
         </div>
 
         <div className="flex justify-between">
             <h3 className="leading-7 font-sans font-normal mt-3">Nearby Event</h3>
             <a href="#" className="text-sm text-purple-900 mt-auto">See Details</a>
+            //ADD CARD HERE
         </div>
         </div>
 
