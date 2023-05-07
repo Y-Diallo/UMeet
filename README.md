@@ -15,6 +15,17 @@
 
  The main goal of the HuskyLinks project is to enhance the UW student experience by providing users with a comprehensive, user-friendly, and engaging platform and by assisting them in returning to live engagements.
  
+  # Desired user experience
+  
+ -  User-Friendly Interface: Our platform should have an intuitive and easy-to-use interface that allows users to quickly find and navigate to the events they're interested in attending.
+ 
+ -  Efficient Event Discovery: Our app should have a comprehensive and up-to-date database of events, with features that make it easy for users to discover events that match their interests, such as filters, search functionality, and sorting options.
+ 
+- Real-Time Updates: To guarantee that users are always up to date and don't miss out on any vital details, our platform should deliver real-time updates concerning occurrences, such as changes in date, time, or location.
+
+- Simple Event Creation: Our platform should feature an easy-to-use interface that allows event organizers to easily create, publish, and update events.
+
+ 
  # Implementation details
  
  For the HuskyLinks application's front-end development, we used React with TypeScript. For the back-end development, we used Firebase as our database.

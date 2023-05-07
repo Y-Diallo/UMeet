@@ -37,18 +37,18 @@ function EventInformation() {
                     
                     <div style={{ zIndex: 10, position: 'absolute', top: '40%', left: '12%', display: 'flex', alignItems: 'center', fontWeight:'bold'}}>
                         <FontAwesomeIcon icon={faCalendarDays} size="lg" className="mr-2 text-white mb-1" />
-                        <h3 style={{ color:'#DEE1E6'}}>{event.startDate.toLocaleDateString(undefined,dateOptions)}</h3>
+                        <h3 style={{ color:'#DEE1E6'}}>{new Date(event.startDate).toLocaleDateString(undefined,dateOptions)}</h3>
                     </div>
-                    <h4 style={{ zIndex: 10, position: 'absolute', top: '43.5%', left: '18%', color:'#BCC1CA', fontSize:'14px'}}>{event.startDate.toLocaleDateString(undefined,dayOptions)}</h4>
+                    <h4 style={{ zIndex: 10, position: 'absolute', top: '43.5%', left: '18%', color:'#BCC1CA', fontSize:'14px'}}>{new Date(event.startDate).toLocaleDateString(undefined,dayOptions)}</h4>
                 </div>
 
                 <div style={{ zIndex: 10, position: 'absolute', top: '40%', left: '50%', display: 'flex', alignItems: 'center', color:'white', fontWeight:'bold'}}>
                     <FontAwesomeIcon className="mr-3" icon={faClock} />
-                    <h3>{event.startDate.toLocaleTimeString(undefined, timeOptions)}</h3>
+                    <h3>{new Date(event.startDate).toLocaleTimeString(undefined, timeOptions)}</h3>
                 </div>
 
                 <div style={{ zIndex: 10, position: 'absolute', top: '43%', left: '58%', display: 'flex', alignItems: 'center', color:'#DEE1E6'}}>
-                    <h4>to {event.endDate.toLocaleTimeString(undefined, timeOptions)}</h4>
+                    <h4>to {new Date(event.endDate).toLocaleTimeString(undefined, timeOptions)}</h4>
                 </div>
 
                 <div style={{ zIndex: 10, position: 'absolute', top: '50%', left: '12%', display: 'flex', alignItems: 'center', textAlign:'left' }}>
