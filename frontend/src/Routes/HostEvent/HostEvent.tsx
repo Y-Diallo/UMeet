@@ -104,7 +104,7 @@ function HostEventForm() {
   };
 
   return (
-    <div className="host-event-form p-7 text-purple-900">
+    <div className="host-event-form p-7 text-purple-900 pb-24">
 
       <div className="host-event-form__header mt-4 mb-2 flex justify-between">
         <h1 className="host-event-form__title text-4xl font-bold text-start UWPurple">Host Event</h1>
@@ -164,8 +164,8 @@ function HostEventForm() {
             </div>
         </div>
 
-        <div className="flex mt-4">
-            <div className="w-1/2">
+        <div className="flex mt-4 flex-col">
+            <div className="flex-grow">
                 <h2 className="host-event-form__section-title UWPurple text-sm text-left">
                     Event Start Time
                 </h2>
@@ -182,7 +182,7 @@ function HostEventForm() {
                     isClearable
                 />
             </div>
-            <div className="w-1/2 ml-5">
+            <div className="flex-grow mt-4">
                 <h2 className="host-event-form__section-title UWPurple text-sm text-left">
                     Event End Time
                 </h2>
