@@ -34,6 +34,7 @@ function EventInformation() {
                     style={{ zIndex: 10, position: 'absolute', top: '30%', left: '40%', transform: 'translate(-50%, -50%)'}}>
                     {event.title}
                     </h2>
+                    
                     <div style={{ zIndex: 10, position: 'absolute', top: '40%', left: '12%', display: 'flex', alignItems: 'center', fontWeight:'bold'}}>
                         <FontAwesomeIcon icon={faCalendarDays} size="lg" className="mr-2 text-white mb-1" />
                         <h3 style={{ color:'#DEE1E6'}}>{event.startDate.toLocaleDateString(undefined,dateOptions)}</h3>
