@@ -55,4 +55,10 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
+  .button-uw-gold {
+    background-color: rgb(183 165 122);
+  }
+  .margin-pt5rem {
+    margin: 0.5rem;
+  }
 }
