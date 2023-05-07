@@ -10,6 +10,7 @@ import FindEvents from "./Routes/Home/FindEvents";
 import EventInformation from "./Routes/EventInformation/EventInformation";
 import Settings from "./Routes/Settings/Settings";
 import MyEvents from "./Routes/MyEvents/MyEvents";
+import EventCreator from "./Routes/EventCreator/EventCreator";
 export const userContext = createContext<{user: any | null, setUser: (user: any | null) => void}>({user: null, setUser: () => {}});
 
 
@@ -42,7 +43,7 @@ function Root() {
             <MyEvents/>}/>
           <Route path="/create_event" element={
             // user == null? <LoginSignUp/>:
-            <Example/>}/>
+            <EventCreator/>}/>
           <Route path="/event_details/:eventId" element={
             // user == null? <LoginSignUp/>:
             <EventInformation/>}/>
