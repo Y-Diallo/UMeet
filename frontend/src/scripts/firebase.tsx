@@ -28,6 +28,8 @@ export const auth = getAuth(app);
 export const db = getDatabase(app);
 export const analytics = getAnalytics(app);
 export const functions = getFunctions(app);
+export const enrollInEvent = httpsCallable(functions, 'enrollInEvent');
+export const unenrollInEvent = httpsCallable(functions, 'unenrollInEvent');
 // export const createNewEvent = httpsCallable(functions, 'createNewEvent');
 // export const deleteEvent = httpsCallable(functions, 'deleteEvent');
 

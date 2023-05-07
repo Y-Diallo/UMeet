@@ -43,8 +43,13 @@ function Home() {
                     setJoinedEvents(events);
                 });
 			});
-			
-
+            //get name and profile picture
+            onValue(ref(db, `users/${user.uid}/`), (snapshot) => {
+                const entries = snapshot.val();
+                setName(entries.name);
+                setProfilePicture(entries.profilePicture);
+            });
+            
 		}
 
 	}, []);
