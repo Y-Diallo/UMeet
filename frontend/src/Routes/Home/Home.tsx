@@ -1,11 +1,14 @@
 
 import "../../index.css"
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PersonalizedHeader from "./Components/PersonalizedHeader";
 import EventCard from "./Components/EventCard";
 import { EventDetails } from "../../scripts/types";
 import { defaultEvents } from "../../scripts/defaultData";
 import EventTypeHeader from "./Components/EventTypeHeader";
+import { userContext } from "../../Root";
+import { onValue, ref } from "firebase/database";
+import { db } from "../../scripts/firebase";
 
 function Home() {
     const [name, setName] = useState<string>("Alexander Hoff")
@@ -15,6 +18,36 @@ function Home() {
         defaultEvents[0],defaultEvents[1]]);
     const [recommendedEventDetails, setRecommendedEventDetails] = useState<EventDetails[]>([
         defaultEvents[2],defaultEvents[3]]);
+    
+    const {user} = useContext(userContext);
+
+    useEffect(() => {
+		if (user !== null) {
+            onValue(ref(db, `users/${user.uid}/enrolledEvents/`), (snapshot) => {
+				const eventsJoined: string[] = [];
+				const entries = snapshot.val();
+				for (const key in entries) {
+					eventsJoined.push(entries[key]);
+				}
+                //get current events
+                onValue(ref(db, `events/`), (snapshot) => {
+                    const events: EventDetails[] = [];
+                    const entries = snapshot.val();
+                    for (const key in entries) {
+                        if(eventsJoined.includes(key)){
+                            events.push(entries[key]);
+                            console.log(entries[key]);
+                        }
+                    }
+                    console.log(events);
+                    setJoinedEvents(events);
+                });
+			});
+			
+
+		}
+
+	}, []);
 
     return ( 
         <div className="pb-24 p-8">
