@@ -2,11 +2,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faCompass, faTicket, faGear } from '@fortawesome/free-solid-svg-icons'
 
-const navbarPages : string[] = ["home", "search", "events", "settings", "event_details"];
+const navbarPages : string[] = ["home", "search", "events", "settings", "profile", "create_event"];
 
 function Navbar() {
   const page = useLocation().pathname.split('/')[1];
-  if (!navbarPages.some((p) => p.includes(page))) {
+  if (!navbarPages.some((p) => p.includes(page)) || ["","/"].includes(page)) {
     return null;
   }
   return (

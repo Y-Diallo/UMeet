@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { browserSessionPersistence, createUserWithEmailAndPassword, setPersistence } from "firebase/auth";
-import { auth } from "../../../scripts/firebase";
+import { auth, signUp } from "../../../scripts/firebase";
 import { userContext } from '../../../Root';
 
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../scripts/colors.tsx';
@@ -44,6 +44,8 @@ function SignUp({setNeedSignUp}: SignUpProps) {
       .then((userCredential) => {
         // Handle successful sign-up
 				setUser(userCredential.user);
+        console.log("newSignUp: " + signUp({email: email}));
+        //clear any user data from local storage
         navigate("/home");
       })
       .catch((error) => {
@@ -59,7 +61,7 @@ function SignUp({setNeedSignUp}: SignUpProps) {
   };
 
   return (
-    <section className="bg-gray-50 text-left">
+    <section className="bg-[#4B2E83] text-left w-full">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -91,7 +93,7 @@ function SignUp({setNeedSignUp}: SignUpProps) {
                       </div>
                       <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign Up</button>
                       <p className="text-sm font-light text-gray-500 pb-5">
-                          Already have an account? <a onClick={()=>setNeedSignUp(false)} className="font-medium text-primary-600 hover:underline">Sign up</a>
+                          Already have an account? <a onClick={()=>setNeedSignUp(false)} className="font-medium text-primary-600 hover:underline">Sign in</a>
                       </p>
                   </form>
               </div>

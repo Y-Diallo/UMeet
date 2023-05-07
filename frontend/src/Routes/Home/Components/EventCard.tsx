@@ -47,7 +47,7 @@ function EventCard({event}: EventCardProps) {
                 <dt className="sr-only">Attendees</dt>
                 <dd className="text-sm text-gray-500">{event.attendees+"/"+event.maxAttendees}</dd>
                 <div className="text-gray-500 text-sm font-medium ml-auto">
-                    {event.startDate.toLocaleDateString("en-US", {month: "long", day: "numeric", year:"numeric"})}
+                    {new Date(event.startDate).toLocaleDateString("en-US", {month: "long", day: "numeric", year:"numeric"})}
                 </div>
                 </div>
                 {/* event date */}

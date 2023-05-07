@@ -28,8 +28,11 @@ export const auth = getAuth(app);
 export const db = getDatabase(app);
 export const analytics = getAnalytics(app);
 export const functions = getFunctions(app);
-// export const createNewEvent = httpsCallable(functions, 'createNewEvent');
-// export const deleteEvent = httpsCallable(functions, 'deleteEvent');
+export const enrollInEvent = httpsCallable(functions, 'enrollInEvent');
+export const unenrollInEvent = httpsCallable(functions, 'unenrollInEvent');
+export const signUp = httpsCallable(functions, 'signUp');
+export const createEvent = httpsCallable(functions, 'createEvent');
+export const deleteEvent = httpsCallable(functions, 'deleteEvent');
 
-import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
+// import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
 

@@ -1,17 +1,35 @@
 import { faBasketShopping, faBriefcase, faChampagneGlasses, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { defaultEvents } from "../../scripts/defaultData";
 import { EventDetails } from "../../scripts/types";
 import EventCard from "./Components/EventCard";
 import { useParams } from "react-router-dom";
+import { onValue, ref } from "firebase/database";
+import { userContext } from "../../Root";
+import { db } from "../../scripts/firebase";
 
 function FindEvents() {
     const [title, setTitle] = useState<string>("Find Events");
     const {searchType} = useParams<{searchType: string}>();
-    const [eventDetails, setPopularEventDetails] = useState<EventDetails[]>([
+    const [eventDetails, setEventDetails] = useState<EventDetails[]>([
         defaultEvents[0],defaultEvents[1],defaultEvents[2],defaultEvents[3]]);
+        const {user} = useContext(userContext);
+
+        useEffect(() => {
+            if (user !== null) {
+                //get current events
+                onValue(ref(db, `events/`), (snapshot) => {
+                    const events: EventDetails[] = [];
+                    const entries = snapshot.val();
+                    for (const key in entries) {
+                            events.push(entries[key]);
+                    }
+                    setEventDetails(events);
+                }); 
+            }
     
+        }, []);
     useEffect(() => {
         //scroll to top of page
         window.scrollTo(0, 0);
@@ -34,7 +52,7 @@ function FindEvents() {
     // }
 
     return (
-    <div className="p-8">
+    <div className="pb-24 p-8">
         <h1 className="text-3xl font-bold">{title}</h1>
         <label className="relative block mt-6">
             <span className="sr-only">Search</span>

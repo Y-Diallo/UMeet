@@ -5,9 +5,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+// import { useContext } from "react";
+// import { userContext } from "../../Root";
 
 function Profile() {
-  const [name, setName] = useState<string>("Alexander Dynamic Hoff");
+  const [name, setName] = useState<string>("Alexander Hoff");
   const [profilePicture, setProfilePicture] = useState<string>(
     "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
   );
@@ -18,24 +20,26 @@ function Profile() {
   const [attendedEvents, setAttendedEvents] = useState<number>(30);
   const [hostedEvents, setHostedEvents] = useState<number>(10);
   const [totalAttendees, setTotalAttendees] = useState<number>(28);
+  // const { user } = useContext(userContext);
+
   return (
     <div>
-      <img
-        className="w-48 h-48 shadow rounded-full max-w-full h-auto align-middle border-non inline"
-        src={profilePicture}
-      ></img>
-      <br></br>
-      <br></br>
-      <h1 className="mx-auto text-3xl text-purple-900 font-bold">{name}</h1>
-      <div className="my-3">
-        <h3 className="mx-auto text-lg text-purple-900">{major}</h3>
-      </div>
-      <div className="my-3">
-        <button className="button-uw-gold text-white inline border-solid content-around w-48">
-          {userType}
-        </button>
-      </div>
+      <div className="grid justify-items-center ">
+        <img
+          className="shadow rounded-full align-middle border-non inline w-2/5 mt-6 mb-6"
+          src={profilePicture}
+        />
 
+        <h1 className="mx-auto text-3xl text-purple-900 font-bold">{name}</h1>
+        <div className="my-3">
+          <h3 className="mx-auto text-lg text-purple-900">{major}</h3>
+        </div>
+        <div className="my-3">
+          <button className="button-uw-gold text-white inline border-solid content-around w-48">
+            {userType}
+          </button>
+        </div>
+      </div>
       {/* <div className="grid grid-cols-2 gap-0 justify-center my-3">
         <div>
           <h2 className="p-5 text-center content-evenly">EVENTS HOSTED</h2>
@@ -105,7 +109,7 @@ function Profile() {
             </div>
           </div>
 
-          <button className="button-uw-gold text-white inline border-solid content-around w-48">
+          <button className="button-uw-gold text-white block mx-auto w-48 mt-2 mb-2">
             EDIT PROFILE
           </button>
         </div>

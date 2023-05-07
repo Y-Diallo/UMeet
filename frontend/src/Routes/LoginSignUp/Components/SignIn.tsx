@@ -44,7 +44,7 @@ function SignIn({setNeedSignUp}: SignInProps) {
   };
 
   return (
-    <section className="bg-gray-50 text-left">
+    <section className="bg-[#4B2E83] text-left w-full">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

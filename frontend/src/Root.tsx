@@ -9,7 +9,12 @@ import Navbar from "./Navbar";
 import FindEvents from "./Routes/Home/FindEvents";
 import EventInformation from "./Routes/EventInformation/EventInformation";
 import Settings from "./Routes/Settings/Settings";
+<<<<<<< HEAD
 import HostEventForm from "./Routes/HostEvent/HostEvent";
+=======
+import MyEvents from "./Routes/MyEvents/MyEvents";
+import EventCreator from "./Routes/EventCreator/EventCreator";
+>>>>>>> 451c78de3eabc9a8ac3d8c1bae3a7744f354bcc7
 export const userContext = createContext<{user: any | null, setUser: (user: any | null) => void}>({user: null, setUser: () => {}});
 
 
@@ -18,11 +23,15 @@ function Root() {
     return ( 
     <userContext.Provider value={{user, setUser}}>
       <BrowserRouter>
-        <Navbar />
+      <Navbar />
         <Routes>
           <Route path="*" element={<Landing/>}/>
           <Route path="/login" element={<LoginSignUp/>}/>
+<<<<<<< HEAD
           <Route path="/host" element={<HostEventForm/>}/>
+=======
+          <Route path="/login/:signUp" element={<LoginSignUp/>}/>
+>>>>>>> 451c78de3eabc9a8ac3d8c1bae3a7744f354bcc7
           <Route path="/home" element={
             // user == null? <LoginSignUp/>:
           <Home/>}/>
@@ -34,22 +43,22 @@ function Root() {
             //this is where the See Details buttons on the home page will take you
             // user == null? <LoginSignUp/>:
             <FindEvents/>}/>
-          <Route path="/profile/:userId" element={
+          <Route path="/profile" element={
             // user == null? <LoginSignUp/>:
             <Profile/>}/>
-          <Route path="/profile/:userId/edit" element={
-            // user == null? <LoginSignUp/>:
-            <Example/>}/>
           <Route path="/events" element={
             // user == null? <LoginSignUp/>:
-            <Example/>}/>
+            <MyEvents/>}/>
           <Route path="/create_event" element={
             // user == null? <LoginSignUp/>:
-            <Example/>}/>
+            <EventCreator/>}/>
           <Route path="/event_details/:eventId" element={
             // user == null? <LoginSignUp/>:
             <EventInformation/>}/>
           <Route path="/settings" element={
+            // user == null? <LoginSignUp/>:
+            <Settings/>}/>
+          <Route path="/settings/editProfile" element={
             // user == null? <LoginSignUp/>:
             <Settings/>}/>
         </Routes>
