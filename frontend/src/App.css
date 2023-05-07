@@ -40,7 +40,18 @@
   color: #888;
 }
 
+.UWGold {
+  color: #b7a57a;
+} 
 
+.badgeUnselected {
+  color: #323842;
+  background-color: #f3f4f6;
+}
+
+.UWGoldForBG {
+  background-color: #faf8f5;
+}
 
 .UWPurple {
   color: #4b2e83;
@@ -48,5 +59,29 @@
 
 .card-title {
   padding: 1rem;
+}
+.UWPurpleBG {
+  background-color: #4b2e83;
+}
+
+.custom-input {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1;
+  color: #374151;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #b7a57a;
+  box-shadow: 0 0 0 3px rgba(183, 165, 122, 0.3);
 }
 

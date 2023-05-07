@@ -9,6 +9,7 @@ import Navbar from "./Navbar";
 import FindEvents from "./Routes/Home/FindEvents";
 import EventInformation from "./Routes/EventInformation/EventInformation";
 import Settings from "./Routes/Settings/Settings";
+import HostEventForm from "./Routes/HostEvent/HostEvent";
 export const userContext = createContext<{user: any | null, setUser: (user: any | null) => void}>({user: null, setUser: () => {}});
 
 
@@ -21,6 +22,7 @@ function Root() {
         <Routes>
           <Route path="*" element={<Landing/>}/>
           <Route path="/login" element={<LoginSignUp/>}/>
+          <Route path="/host" element={<HostEventForm/>}/>
           <Route path="/home" element={
             // user == null? <LoginSignUp/>:
           <Home/>}/>
