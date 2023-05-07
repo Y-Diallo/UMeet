@@ -28,23 +28,13 @@ function EventInformation() {
             onValue(ref(db, `events/${eventId}`), (snapshot) => {
                 const events: EventDetails = snapshot.val();
                 setEvent(events);
-                onValue(ref(db, `users/${user.uid}/enrolledEvents/`), (snapshot) => {
+                onValue(ref(db, `users/${user.uid}/enrolledEvents/${eventId}`), (snapshot) => {
                     //check if user is enrolled
-                    const entries = snapshot.val();
-                    for (const key in entries) {
-                        if(entries[key] === eventId){
-                            setIsEnrolled(true);
-                        }
-                    }
+                    setIsEnrolled(snapshot.val() !== null);
                 });
-                onValue(ref(db, `users/${user.uid}/hostedEvents/`), (snapshot) => {
+                onValue(ref(db, `users/${user.uid}/hostedEvents/${eventId}`), (snapshot) => {
                     //check if user is owner
-                    const entries = snapshot.val();
-                    for (const key in entries) {
-                        if(entries[key] === eventId){
-                            setIsOwner(true);
-                        }
-                    }
+                    setIsOwner(snapshot.val() !== null);
                 });
                 if (!isOwner){
                     onValue(ref(db, `users/${events.hostId}/profilePicture`), (snapshot) => {

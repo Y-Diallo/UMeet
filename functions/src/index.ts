@@ -22,11 +22,17 @@ exports.unenrollInEvent = functions.https.onCall((data : any, context : any) => 
   //check if the user is enrolled in the event
   return admin.database().ref('/users/' + context.auth.uid + "/enrolledEvents/" + data.eventId)
   .once('value').then((snapshot) => {
-    //if the user is not enrolled, enroll them
+    //if the user is not enrolled, do nothing
     functions.logger.info("snapshot.val() " + snapshot.val());
     if(snapshot.val() != null){
       admin.database().ref('/users/' + context.auth.uid + "/enrolledEvents/" + data.eventId).remove();
       // admin.database().ref('/events/' + data.eventId + "/enrolledUsers/" + context.auth.uid).remove();
+      // decrement the number of enrolled users on the event
+      admin.database().ref('/events/' + data.eventId + "/attendees").transaction((currentValue) => {
+        return currentValue - 1;
+      });
+      //remove the user from the event's enrolled users
+      admin.database().ref('/events/' + data.eventId + "/enrolledUsers/" + context.auth.uid).remove();
       return {isEnrolled: false};
     }
     return {isEnrolled: false};
@@ -51,6 +57,12 @@ exports.enrollInEvent = functions.https.onCall((data : any, context : any) => {
     if(snapshot.val() == null){
       admin.database().ref('/users/' + context.auth.uid + "/enrolledEvents/" + data.eventId).set(data.eventId);
       // admin.database().ref('/events/' + data.eventId + "/enrolledUsers/" + context.auth.uid).set(context.auth.uid);
+      // increment the number of enrolled users on the event
+      admin.database().ref('/events/' + data.eventId + "/attendees").transaction((currentValue) => {
+        return currentValue + 1;
+      });
+      //add the user to the event's enrolled users
+      admin.database().ref('/events/' + data.eventId + "/enrolledUsers/" + context.auth.uid).set(context.auth.uid);
       return true;
     }
     return false;
@@ -84,4 +96,76 @@ exports.signUp = functions.https.onCall((data : any, context : any) => {
     return false;
   });
   
+});
+
+exports.createEvent = functions.https.onCall((data : any, context : any) => {
+  //get the app instance
+  try{
+    admin.initializeApp();
+  } catch (e) {
+    functions.logger.info(e);
+  }
+  const newId = crypto.randomUUID();
+  const event : {
+    id: string;
+    title: string;
+    hostId: string;
+    attendees: number;
+    maxAttendees: number;
+    image: string;
+    image2?: string;
+    location: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+  } = data.event;
+  //check if the user already exists
+  //if the user does not exist, create them
+  admin.database().ref('/event/' + newId).set({
+    id: newId,
+    title: event.title,
+    hostId: context.auth.uid,
+    attendees: 0,
+    maxAttendees: event.maxAttendees,
+    image: event.image,
+    image2: event.image2,
+    location: event.location,
+    startDate: event.startDate,
+    endDate: event.endDate,
+    description: event.description,
+    enrolledUsers: null,
+  });
+  //add the event to the user's hosted events
+  admin.database().ref('/users/' + context.auth.uid + "/hostedEvents/" + newId).set(newId);
+  //add the user to the event's enrolled users
+  admin.database().ref('/events/' + newId + "/enrolledUsers/" + context.auth.uid).set(context.auth.uid);
+  return true;
+
+});
+
+exports.deleteEvent = functions.https.onCall((data : any, context : any) => {
+  //get the app instance
+  try{
+    admin.initializeApp();
+  } catch (e) {
+    functions.logger.info(e);
+  }
+
+
+  
+  //remove the event from the user's hosted events
+  admin.database().ref('/users/' + context.auth.uid + "/hostedEvents/" + data.eventId).remove();
+  //remove the event from all users enrolled events
+  //get all the users enrolled in the event
+  admin.database().ref('/events/' + data.eventId + "/enrolledUsers").once('value').then((snapshot) => {
+    //for each user enrolled in the event
+    snapshot.forEach((childSnapshot) => {
+      //remove the event from the user's enrolled events
+      admin.database().ref('/users/' + childSnapshot.key + "/enrolledEvents/" + data.eventId).remove();
+    });
+  });
+  admin.database().ref('/event/' + data.eventId).remove();
+  
+  return true;
+
 });
