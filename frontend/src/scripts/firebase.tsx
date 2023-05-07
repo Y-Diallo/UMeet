@@ -30,6 +30,7 @@ export const analytics = getAnalytics(app);
 export const functions = getFunctions(app);
 export const enrollInEvent = httpsCallable(functions, 'enrollInEvent');
 export const unenrollInEvent = httpsCallable(functions, 'unenrollInEvent');
+export const signUp = httpsCallable(functions, 'signUp');
 // export const createNewEvent = httpsCallable(functions, 'createNewEvent');
 // export const deleteEvent = httpsCallable(functions, 'deleteEvent');
 

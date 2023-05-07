@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { browserSessionPersistence, createUserWithEmailAndPassword, setPersistence } from "firebase/auth";
-import { auth } from "../../../scripts/firebase";
+import { auth, signUp } from "../../../scripts/firebase";
 import { userContext } from '../../../Root';
 
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../scripts/colors.tsx';
@@ -44,6 +44,8 @@ function SignUp({setNeedSignUp}: SignUpProps) {
       .then((userCredential) => {
         // Handle successful sign-up
 				setUser(userCredential.user);
+        console.log("newSignUp: " + signUp({email: email}));
+        //clear any user data from local storage
         navigate("/home");
       })
       .catch((error) => {
@@ -59,7 +61,7 @@ function SignUp({setNeedSignUp}: SignUpProps) {
   };
 
   return (
-    <section className="bg-gray-50 text-left">
+    <section className="bg-[#4B2E83] text-left w-full">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

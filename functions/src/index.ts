@@ -57,3 +57,31 @@ exports.enrollInEvent = functions.https.onCall((data : any, context : any) => {
   });
   
 });
+
+exports.signUp = functions.https.onCall((data : any, context : any) => {
+  //get the app instance
+  try{
+    admin.initializeApp();
+  } catch (e) {
+    functions.logger.info(e);
+  }
+
+  
+  return admin.database().ref('/users/' + context.auth.uid)
+  .once('value').then((snapshot) => {
+    //check if the user already exists
+    if(snapshot.val() == null){
+      //if the user does not exist, create them
+      admin.database().ref('/users/' + context.auth.uid).set({
+        name: data.email.split("@")[0],
+        profilePicture: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=100",
+        uwid: "",
+        hostedEvents: null,
+        enrolledEvents: null,
+      });
+      return true;
+    }
+    return false;
+  });
+  
+});

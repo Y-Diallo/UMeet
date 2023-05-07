@@ -18,27 +18,15 @@ function FindEvents() {
 
         useEffect(() => {
             if (user !== null) {
-                onValue(ref(db, `users/${user.uid}/enrolledEvents/`), (snapshot) => {
-                    const eventsJoined: string[] = [];
+                //get current events
+                onValue(ref(db, `events/`), (snapshot) => {
+                    const events: EventDetails[] = [];
                     const entries = snapshot.val();
                     for (const key in entries) {
-                        eventsJoined.push(entries[key]);
+                            events.push(entries[key]);
                     }
-                    //get current events
-                    onValue(ref(db, `events/`), (snapshot) => {
-                        const events: EventDetails[] = [];
-                        const entries = snapshot.val();
-                        for (const key in entries) {
-                            if(eventsJoined.includes(key)){
-                                events.push(entries[key]);
-                                console.log(entries[key]);
-                            }
-                        }
-                        console.log(events);
-                        setEventDetails(events);
-                    });
-                });
-                
+                    setEventDetails(events);
+                }); 
             }
     
         }, []);
