@@ -130,7 +130,7 @@ exports.createEvent = functions.https.onCall((data : any, context : any) => {
   admin.database().ref('/events/' + newId + "/attendees").transaction((currentValue) => {
     return currentValue + 1;
   });
-  return data;
+  return {eventId: newId};
 
 });
 

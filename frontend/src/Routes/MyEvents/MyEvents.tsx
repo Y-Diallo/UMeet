@@ -76,8 +76,8 @@ function MyEvents() {
                 <FontAwesomeIcon onClick={()=>navigate("/create_event")} icon={faPlus} className="text-2xl float-right mt-4" />
             </div>
             <div className="flex flex-row border-purple-500 gap-3 mb-10 ml-20">
-                <button className={`p-3 text-2xl font-bold ${showJoinedOrHosted ? "text-purple-900 border-b-2 border-purple-500" : "border-b-2 border-gray-400 text-gray-400"}`} onClick={() => setShowJoinedOrHosted(true)}>Participating</button>
-                <button className={`text-2xl font-bold ${!showJoinedOrHosted ? "text-purple-900 border-b-2 border-purple-500" : "border-b-2 border-gray-400 text-gray-400"}`} onClick={() => setShowJoinedOrHosted(false)}>Hosting</button>
+                <button className={`p-3 text-sm font-bold ${showJoinedOrHosted ? "text-purple-900 border-b-2 border-purple-500" : "border-b-2 border-gray-400 text-gray-400"}`} onClick={() => setShowJoinedOrHosted(true)}>Participating</button>
+                <button className={`text-sm font-bold ${!showJoinedOrHosted ? "text-purple-900 border-b-2 border-purple-500" : "border-b-2 border-gray-400 text-gray-400"}`} onClick={() => setShowJoinedOrHosted(false)}>Hosting</button>
             </div>
             {showJoinedOrHosted ?<div className="text-left m-0">
                 {joinedEvents.map((eventDetails, ) => (
