@@ -12,6 +12,7 @@ export const defaultEvents: EventDetails[] = [
         endDate: "2023-05-15T12:00:00",
         description: "Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.",
         image2: "https://images.unsplash.com/photo-1583343766731-4410303d8f8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=100",
+        hostId: "robotnic",
     },
     {
         id: "5670f3b9-bd4a-4ef4-af44-2cd527a3e1c5",
@@ -23,6 +24,7 @@ export const defaultEvents: EventDetails[] = [
         startDate: "2023-05-11T12:00:00",
         endDate: "2023-05-11T16:00:00",
         description: "Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.",
+        hostId: "lSJQDk7iD0O7evO9pEZNJuOwD9f2",
     },
     {
         id: "20dd0ea0-d770-49a2-8419-aa51f7e66ea1",
@@ -34,6 +36,7 @@ export const defaultEvents: EventDetails[] = [
         startDate: "2023-05-10T18:00:00",
         endDate: "2023-05-10T22:00:00",
         description: "Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.",
+        hostId: "robotnic",
     },
     {
         id: "e527085f-4e75-44be-a66e-ecc0d08351fc",
@@ -45,5 +48,6 @@ export const defaultEvents: EventDetails[] = [
         startDate: "2023-06-11T10:00:00",
         endDate: "2023-06-11T12:00:00",
         description: "Looking for other Art Majors who want to have a fun outing! Perfect time to network and discover different art styles.",
+        hostId: "robotnic",
     }
 ]
