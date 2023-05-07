@@ -7,6 +7,8 @@ import { defaultEvents } from "../../scripts/defaultData";
 import { userContext } from "../../Root";
 import { onValue, ref } from "firebase/database";
 import { db } from "../../scripts/firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function MyEvents() {
     const [name, setName] = useState<string>("Alexander Hoff")
@@ -73,13 +75,14 @@ function MyEvents() {
 
     return ( 
         <div className="pb-24 p-8">
-            <h1 className="text-4xl font-bold">My Events</h1>
-            {/** two buttons touching each other in a line, with a border bottom
-             * if one is selected, its the border bottom and text is purple
-             */}
-            <div className="flex flex-row justify-center border-purple-500">
-                <button className={`text-2xl font-bold ${showJoinedOrHosted ? "text-purple-500 border-b-2 border-purple-500" : "border-b-2 border-black"}`} onClick={() => setShowJoinedOrHosted(true)}>Joined</button>
-                <button className={`text-2xl font-bold ${!showJoinedOrHosted ? "text-purple-500 border-b-2 border-purple-500" : "border-b-2 border-black"}`} onClick={() => setShowJoinedOrHosted(false)}>Hosted</button>
+            <div className="flex">
+                <h1 className="text-3xl font-bold text-purple-500 mb-6 mt-2 flex-grow">My Events</h1>
+                {/** icon of + on opposite side of screen */}
+                <FontAwesomeIcon icon={faPlus} className="text-2xl float-right mt-4" />
+            </div>
+            <div className="flex flex-row border-purple-500 gap-3 mb-10 ml-20">
+                <button className={`text-sm p-3 text-2xl font-bold ${showJoinedOrHosted ? "text-purple-500 border-b-2 border-purple-500" : "border-b-2 border-gray-400 text-gray-400"}`} onClick={() => setShowJoinedOrHosted(true)}>Participating</button>
+                <button className={`text-sm text-2xl font-bold ${!showJoinedOrHosted ? "text-purple-500 border-b-2 border-purple-500" : "border-b-2 border-gray-400 text-gray-400"}`} onClick={() => setShowJoinedOrHosted(false)}>Hosting</button>
             </div>
             {showJoinedOrHosted ?<div className="text-left m-0">
                 {joinedEvents.map((eventDetails, index) => (
