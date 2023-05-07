@@ -7,7 +7,7 @@ import { EventDetails } from "../../scripts/types";
 import { useNavigate, useParams } from "react-router-dom";
 import { onValue, ref } from "firebase/database";
 import { userContext } from "../../Root";
-import { db, enrollInEvent, unenrollInEvent } from "../../scripts/firebase";
+import { db, deleteEvent, enrollInEvent, unenrollInEvent } from "../../scripts/firebase";
 
 function EventInformation() {
     const navigate = useNavigate();
@@ -80,6 +80,7 @@ function EventInformation() {
             <div style={{backgroundImage: `url(${event.image2 != undefined ? event.image2 : event.image})`,backgroundSize: 'cover', backgroundPosition: 'center', width:'100vw'}} className="p-0">
                 <FontAwesomeIcon style={{ zIndex: 10, position: 'absolute', top: '5em', left: '2em', color:'white', margin:"1em"}} icon={faChevronLeft} onClick={() => navigate(-1)}/>
                 {!isEnrolled||isOwner ? null:<button onClick={()=> handleUnenroll()} className="bg-[#4B2E83] rounded-full px-4 py-2 text-white font-bold" style={{ zIndex: 10, position: 'absolute', top: '5em', right: '2em', margin:"1em"}}>Unenroll</button>}
+                {!isOwner ? null:<button onClick={()=> {deleteEvent({eventId}); navigate(-1)}} className="bg-[#4B2E83] rounded-full px-4 py-2 text-white font-bold" style={{ zIndex: 10, position: 'absolute', top: '5em', right: '2em', margin:"1em"}}>Delete Event</button>}
                 {/** profile picture just below unenroll button on top right */}
                 <div style={{ zIndex: 10, position: 'absolute', top: '28%', right: '2em', margin:"1em"}}>
                     <img className="rounded-full w-16 h-16" src={ownerImage} alt="profile picture" />

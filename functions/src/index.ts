@@ -155,7 +155,8 @@ exports.deleteEvent = functions.https.onCall((data : any, context : any) => {
       admin.database().ref('/users/' + childSnapshot.key + "/enrolledEvents/" + data.eventId).remove();
     });
   });
-  admin.database().ref('/event/' + data.eventId).remove();
+  //remove the event from the events table
+  admin.database().ref('/events/' + data.eventId).remove();
   
   return true;
 
