@@ -22,7 +22,8 @@ function SignOutButton() {
   };
 
   return (
-    <button className="bg-purple-400 text-white px-10 py-3 rounded-lg" onClick={handleSignOut}>Sign out</button>
+    <button className="bg-purple-900 text-white w-30 px-1 py-3 rounded-lg inline-block" onClick={handleSignOut}>Sign out</button>
+
   );
 }
 
