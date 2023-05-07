@@ -32,7 +32,7 @@ function Root() {
             //this is where the See Details buttons on the home page will take you
             // user == null? <LoginSignUp/>:
             <FindEvents/>}/>
-          <Route path="/profile/:userId" element={
+          <Route path="/profile" element={
             // user == null? <LoginSignUp/>:
             <Profile/>}/>
           <Route path="/profile/:userId/edit" element={
