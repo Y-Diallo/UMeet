@@ -24,33 +24,33 @@ function Root() {
           <Route path="/login" element={<LoginSignUp/>}/>
           <Route path="/login/:signUp" element={<LoginSignUp/>}/>
           <Route path="/home" element={
-            // user == null? <LoginSignUp/>:
+            user == null? <LoginSignUp/>:
           <Home/>}/>
           <Route path="/search" element={
-            // user == null? <LoginSignUp/>:
+            user == null? <LoginSignUp/>:
             <FindEvents/>}/>
           <Route path="/search/:searchType" element={ 
             //the idea for this page is basically to have a specialized search for like popular events, or events near you, or events you might like etc.
             //this is where the See Details buttons on the home page will take you
-            // user == null? <LoginSignUp/>:
+            user == null? <LoginSignUp/>:
             <FindEvents/>}/>
           <Route path="/profile" element={
-            // user == null? <LoginSignUp/>:
+            user == null? <LoginSignUp/>:
             <Profile/>}/>
           <Route path="/events" element={
-            // user == null? <LoginSignUp/>:
+            user == null? <LoginSignUp/>:
             <MyEvents/>}/>
           <Route path="/create_event" element={
-            // user == null? <LoginSignUp/>:
+            user == null? <LoginSignUp/>:
             <HostEventForm/>}/>
           <Route path="/event_details/:eventId" element={
-            // user == null? <LoginSignUp/>:
+            user == null? <LoginSignUp/>:
             <EventInformation/>}/>
           <Route path="/settings" element={
-            // user == null? <LoginSignUp/>:
+            user == null? <LoginSignUp/>:
             <Settings/>}/>
           <Route path="/settings/editProfile" element={
-            // user == null? <LoginSignUp/>:
+            user == null? <LoginSignUp/>:
             <Settings/>}/>
         </Routes>
       </BrowserRouter>
