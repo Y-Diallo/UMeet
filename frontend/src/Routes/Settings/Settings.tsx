@@ -8,9 +8,9 @@ function Settings() {
     "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
   );
   return (
-    <div className="flex flex-col justify-center h-full">
+    <div className="flex flex-col justify-center h-full mx-10">
       <img
-        className="shadow rounded-full border-non inline-block scale-[0.3]"
+        className="shadow rounded-full border-non inline-block scale-[0.5]"
         src={profilePicture}
         alt="Profile Picture"
       />
