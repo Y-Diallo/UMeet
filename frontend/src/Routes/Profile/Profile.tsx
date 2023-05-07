@@ -4,9 +4,9 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
-import { userContext } from "../../Root";
+import { useState } from "react";
+// import { useContext } from "react";
+// import { userContext } from "../../Root";
 
 function Profile() {
   const [name, setName] = useState<string>("Alexander Hoff");
@@ -20,7 +20,7 @@ function Profile() {
   const [attendedEvents, setAttendedEvents] = useState<number>(30);
   const [hostedEvents, setHostedEvents] = useState<number>(10);
   const [totalAttendees, setTotalAttendees] = useState<number>(28);
-  const { user } = useContext(userContext);
+  // const { user } = useContext(userContext);
 
   return (
     <div>
