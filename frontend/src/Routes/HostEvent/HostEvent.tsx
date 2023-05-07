@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import TimePicker from 'react-time-picker';
 import "react-datepicker/dist/react-datepicker.css";
+import { EventDetails } from "../../scripts/types";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { createEvent, storage } from "../../scripts/firebase";
+import { userContext } from "../../Root";
+import { v4 as uuidv4 } from 'uuid';
 
 
 function HostEventForm() {
-  const [eventName, setEventName] = useState('');
-  const [location, setLocation] = useState('');
-  const [ageLimit, setAgeLimit] = useState('');
-  const [maxAttendees, setMaxAttendees] = useState('');
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [eventImage, setEventImage] = useState(null);
+  const [eventName, setEventName] = useState<string>('');
+  const [location, setLocation] = useState<string>('');
+  const [ageLimit, setAgeLimit] = useState<string>('');
+  const [maxAttendees, setMaxAttendees] = useState<string>('');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [eventImage, setEventImage] = useState<File|null>(null);
   const [eventDescription, setEventDescription] = useState('');
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [eventStartTime, setEventStartTime] = useState(null);
-  const [eventEndTime, setEventEndTime] = useState(null);
-  
-  const handleTagSelection = (tag) => {
+  const [selectedDate, setSelectedDate] = useState<Date|null>(null);
+  const [eventStartTime, setEventStartTime] = useState<Date|null>(null);
+  const [eventEndTime, setEventEndTime] = useState<Date|null>(null);
+  const {user} = useContext(userContext);
+  const handleTagSelection = (tag:string) => {
     if (selectedTags.includes(tag)) {
       setSelectedTags(selectedTags.filter((selectedTag) => selectedTag !== tag));
     } else {
@@ -24,17 +29,75 @@ function HostEventForm() {
     }
   };
 
-  const handleImageUpload = (event) => {
+  const handleImageUpload = (event : any) => {
     setEventImage(event.target.files[0]);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event : any) => {
     event.preventDefault();
+    if (eventImage === null) {
+        alert("Please upload an image");
+        return;
+    }
+
     // handle form submission here
+    //upload image to firebase storage
+    const imageId = uuidv4();
+    let imageURL = "";
+    const storageRef = ref(storage, `images/${user.uid+"_"+imageId+"_"+eventImage.name}`);
+
+    const uploadTask = uploadBytesResumable(storageRef, eventImage);
+    // Register three observers:
+    // 1. 'state_changed' observer, called any time the state changes
+    // 2. Error observer, called on failure
+    // 3. Completion observer, called on successful completion
+    uploadTask.on('state_changed', (snapshot) => {
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+                case 'paused':
+                console.log('Upload is paused');
+                break;
+                case 'running':
+                console.log('Upload is running');
+                break;
+            }
+        }, 
+        (error) => {
+            // Handle unsuccessful uploads
+            console.warn("upload failed")
+        }, () => {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                console.log('File available at', downloadURL);
+                imageURL = downloadURL;
+                //get image url
+                const eventDetails : EventDetails = {
+                    id: "",
+                    title: eventName,
+                    hostId: "",
+                    attendees: 0,
+                    maxAttendees: parseInt(maxAttendees),
+                    image: imageURL,
+                    location: location,
+                    startDate: (selectedDate?.toISOString().slice(0, 10)+"T"+eventStartTime?.toISOString().slice(11, 19)+"Z"),
+                    endDate: (selectedDate?.toISOString().slice(0, 10)+"T"+eventEndTime?.toISOString().slice(11, 19)+"Z"),
+                    description: eventDescription,
+                }
+                console.log(eventDetails);
+                console.log("ready for function call");
+                createEvent({event:eventDetails});
+            });
+        }
+    );
+    
   };
 
   return (
-    <div className="host-event-form p-7">
+    <div className="host-event-form p-7 text-purple-900">
 
       <div className="host-event-form__header mt-5 mb-2 flex justify-between">
         <h1 className="host-event-form__title text-2xl font-bold text-start UWPurple">Host Event</h1>
@@ -51,10 +114,10 @@ function HostEventForm() {
                 >
 <path d="M18 9.064a3.049 3.049 0 0 0-.9-2.164 3.139 3.139 0 0 0-4.334 0L.9 18.769A3.064 3.064 0 0 0 5.23 23.1L17.1 11.231a3.047 3.047 0 0 0 .9-2.167zM3.816 21.688a1.087 1.087 0 0 1-1.5 0 1.062 1.062 0 0 1 0-1.5l7.769-7.77 1.505 1.505zM15.688 9.816 13 12.505 11.5 11l2.689-2.688a1.063 1.063 0 1 1 1.5 1.5zM4.863 2.855l1.55-.442.442-1.55a1.191 1.191 0 0 1 2.29 0l.442 1.55 1.55.442a1.191 1.191 0 0 1 0 2.29l-1.55.442-.442 1.55a1.191 1.191 0 0 1-2.29 0l-.442-1.55-1.55-.442a1.191 1.191 0 0 1 0-2.29zm18.274 14.29-1.55.442-.442 1.55a1.191 1.191 0 0 1-2.29 0l-.442-1.55-1.55-.442a1.191 1.191 0 0 1 0-2.29l1.55-.442.442-1.55a1.191 1.191 0 0 1 2.29 0l.442 1.55 1.55.442a1.191 1.191 0 0 1 0 2.29zM17.755 2.5l1.356-.387L19.5.755a1.042 1.042 0 0 1 2 0l.387 1.356 1.356.387a1.042 1.042 0 0 1 0 2l-1.356.387-.387 1.359a1.042 1.042 0 0 1-2 0l-.387-1.355-1.358-.389a1.042 1.042 0 0 1 0-2z"/>                </svg>
                 </a>
-        <button className="host-event-form__save-btn UWPurpleBG text-white rounded px-3 py-1 text-end text-sm">Save Event</button>
+        <button onClick={(e)=>handleSubmit(e)} className="host-event-form__save-btn UWPurpleBG text-white rounded px-3 py-1 text-end text-sm">Save Event</button>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form>
         
         <div className="host-event-form__container" style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
         <div className="flex">
@@ -89,7 +152,7 @@ function HostEventForm() {
                 <DatePicker
                     className="host-event-form__input custom-input"
                     selected={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
+                    onChange={(date) => setSelectedDate(date? date : new Date())}
                     placeholderText="Click to select a date"
                     dateFormat="MM/dd/yyyy"
                 />
@@ -104,7 +167,7 @@ function HostEventForm() {
                 <DatePicker
                     className="host-event-form__input custom-input"
                     selected={eventStartTime}
-                    onChange={(time) => setEventStartTime(time)}
+                    onChange={(time) => setEventStartTime(time? time : new Date())}
                     placeholderText="Select a time"
                     showTimeSelect
                     showTimeSelectOnly
@@ -121,7 +184,7 @@ function HostEventForm() {
                 <DatePicker
                     className="host-event-form__input custom-input"
                     selected={eventEndTime}
-                    onChange={(time) => setEventEndTime(time)}
+                    onChange={(time) => setEventEndTime(time? time : new Date())}
                     placeholderText="Select a time"
                     showTimeSelect
                     showTimeSelectOnly

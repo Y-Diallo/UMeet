@@ -113,7 +113,7 @@ exports.createEvent = functions.https.onCall((data : any, context : any) => {
     attendees: 0,
     maxAttendees: data.event.maxAttendees,
     image: data.event.image,
-    image2: data.event.image2,
+    image2: data.event.image2? data.event.image2 : null,
     location: data.event.location,
     startDate: data.event.startDate,
     endDate: data.event.endDate,

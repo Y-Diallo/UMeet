@@ -9,12 +9,9 @@ import Navbar from "./Navbar";
 import FindEvents from "./Routes/Home/FindEvents";
 import EventInformation from "./Routes/EventInformation/EventInformation";
 import Settings from "./Routes/Settings/Settings";
-<<<<<<< HEAD
 import HostEventForm from "./Routes/HostEvent/HostEvent";
-=======
 import MyEvents from "./Routes/MyEvents/MyEvents";
 import EventCreator from "./Routes/EventCreator/EventCreator";
->>>>>>> 451c78de3eabc9a8ac3d8c1bae3a7744f354bcc7
 export const userContext = createContext<{user: any | null, setUser: (user: any | null) => void}>({user: null, setUser: () => {}});
 
 
@@ -27,11 +24,7 @@ function Root() {
         <Routes>
           <Route path="*" element={<Landing/>}/>
           <Route path="/login" element={<LoginSignUp/>}/>
-<<<<<<< HEAD
-          <Route path="/host" element={<HostEventForm/>}/>
-=======
           <Route path="/login/:signUp" element={<LoginSignUp/>}/>
->>>>>>> 451c78de3eabc9a8ac3d8c1bae3a7744f354bcc7
           <Route path="/home" element={
             // user == null? <LoginSignUp/>:
           <Home/>}/>
@@ -51,7 +44,7 @@ function Root() {
             <MyEvents/>}/>
           <Route path="/create_event" element={
             // user == null? <LoginSignUp/>:
-            <EventCreator/>}/>
+            <HostEventForm/>}/>
           <Route path="/event_details/:eventId" element={
             // user == null? <LoginSignUp/>:
             <EventInformation/>}/>
