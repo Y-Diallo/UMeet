@@ -37,9 +37,6 @@ function Root() {
           <Route path="/profile" element={
             // user == null? <LoginSignUp/>:
             <Profile/>}/>
-          <Route path="/profile/:userId/edit" element={
-            // user == null? <LoginSignUp/>:
-            <Example/>}/>
           <Route path="/events" element={
             // user == null? <LoginSignUp/>:
             <MyEvents/>}/>
@@ -50,6 +47,9 @@ function Root() {
             // user == null? <LoginSignUp/>:
             <EventInformation/>}/>
           <Route path="/settings" element={
+            // user == null? <LoginSignUp/>:
+            <Settings/>}/>
+          <Route path="/settings/editProfile" element={
             // user == null? <LoginSignUp/>:
             <Settings/>}/>
         </Routes>

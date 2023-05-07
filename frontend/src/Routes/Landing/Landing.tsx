@@ -32,7 +32,7 @@ function Landing() {
           <button onClick={()=>navigate("/login/true")} className="bg-[#B7A57A] -ml-8 mr-3 text-white font-bold rounded-full px-8 py-2">
             Sign Up
           </button>
-          <a className="text-[#BCC1CA] font-light ml-2">No account?</a>
+          <a onClick={()=>navigate("/login")} className="text-[#BCC1CA] font-light ml-2">Already have an account?</a>
         </div>
         <img
     src="https://uw-s3-cdn.s3.us-west-2.amazonaws.com/wp-content/uploads/sites/98/2014/10/07214236/W-Logo_Gold_RGB.png"

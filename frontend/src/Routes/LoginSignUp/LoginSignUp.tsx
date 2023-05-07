@@ -19,7 +19,7 @@ function LoginSignUp() {
     return (
     <div style={{display:"flex", width:"auto", height:"100vh"}}>
         <div
-        className="bg-white"
+        className="bg-[#4B2E83]"
             style={{
             flexGrow:1,
             display:"flex",

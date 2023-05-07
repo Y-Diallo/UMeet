@@ -58,7 +58,7 @@ function Home() {
         <div className="pb-24 p-8">
             <div className="text-left m-0">
                 <PersonalizedHeader name={name} profilePicture={profilePicture} />
-                <EventTypeHeader name="Joined Events" type="joined"/>
+                {joinedEvents.length != 0 ? <EventTypeHeader name="Joined Events" type="joined"/>: null}
                 {joinedEvents.map((eventDetails, index) => (
                     <EventCard event={eventDetails} />
                 ))}
