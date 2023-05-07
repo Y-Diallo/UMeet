@@ -1,5 +1,5 @@
 # HuskyLinks
- Discover and Connect with Campus Happenings!"
+Meet without Limits!
 
 ## Goals of the Project
 
