@@ -6,7 +6,7 @@ const navbarPages : string[] = ["home", "search", "events", "settings", "event_d
 
 function Navbar() {
   const page = useLocation().pathname.split('/')[1];
-  if (!navbarPages.some((p) => p.includes(page)) && page != "") {
+  if (!navbarPages.some((p) => p.includes(page)) || ["","/"].includes(page)) {
     return null;
   }
   return (

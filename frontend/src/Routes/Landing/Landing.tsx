@@ -1,9 +1,10 @@
 import "../../index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 function Landing() {
+  const navigate = useNavigate();
   return (
-    //add if statement checking if the auth user is logged in and if so return the dashboard view instead
     <div className="flex h-screen w-screen bg-[#4B2E83]">
       <FontAwesomeIcon
         icon={faLink}
@@ -28,7 +29,7 @@ function Landing() {
           so much more with just a click of a button!
         </h5>
         <div className="flex items-center mt-10">
-          <button className="bg-[#B7A57A] -ml-8 mr-3 text-white font-bold rounded-full px-8 py-2">
+          <button onClick={()=>navigate("/login/true")} className="bg-[#B7A57A] -ml-8 mr-3 text-white font-bold rounded-full px-8 py-2">
             Sign Up
           </button>
           <a className="text-[#BCC1CA] font-light ml-2">No account?</a>
