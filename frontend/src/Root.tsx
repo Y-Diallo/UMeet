@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Example from "./Example";
 import { createContext, useState } from "react";
 import LoginSignUp from "./Routes/LoginSignUp/LoginSignUp";
 import Landing from "./Routes/Landing/Landing";
@@ -11,7 +10,6 @@ import EventInformation from "./Routes/EventInformation/EventInformation";
 import Settings from "./Routes/Settings/Settings";
 import HostEventForm from "./Routes/HostEvent/HostEvent";
 import MyEvents from "./Routes/MyEvents/MyEvents";
-import EventCreator from "./Routes/EventCreator/EventCreator";
 export const userContext = createContext<{user: any | null, setUser: (user: any | null) => void}>({user: null, setUser: () => {}});
 
 

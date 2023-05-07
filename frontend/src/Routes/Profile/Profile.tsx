@@ -9,17 +9,17 @@ import { useState } from "react";
 // import { userContext } from "../../Root";
 
 function Profile() {
-  const [name, setName] = useState<string>("Alexander Hoff");
-  const [profilePicture, setProfilePicture] = useState<string>(
+  const [name, ] = useState<string>("Alexander Hoff");
+  const [profilePicture, ] = useState<string>(
     "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
   );
-  const [major, setMajor] = useState<String>("Art Major");
-  const [userType, setUserType] = useState<String>("Student");
-  const [avgRating, setAvgRating] = useState<number>(4);
-  const [activeEvents, setActiveEvents] = useState<number>(3);
-  const [attendedEvents, setAttendedEvents] = useState<number>(30);
-  const [hostedEvents, setHostedEvents] = useState<number>(10);
-  const [totalAttendees, setTotalAttendees] = useState<number>(28);
+  const [major, ] = useState<String>("Art Major");
+  const [userType, ] = useState<String>("Student");
+  const [avgRating, ] = useState<number>(4);
+  const [activeEvents, ] = useState<number>(3);
+  const [attendedEvents, ] = useState<number>(30);
+  const [hostedEvents, ] = useState<number>(10);
+  const [totalAttendees, ] = useState<number>(28);
   // const { user } = useContext(userContext);
 
   return (
@@ -69,7 +69,7 @@ function Profile() {
       <div className="flex flex-wrap bg-purple-900 rounded-xl content-center mx-auto max-w-screen-md justify-center">
         <div className="m-3">
           <div className="grid grid-row3">
-            <div className="flex grid grid-cols-4 margin-pt5rem">
+            <div className="grid grid-cols-4 margin-pt5rem">
               <div className="col-span-1">
                 <FontAwesomeIcon icon={faStar} style={{ color: "#ffffff" }} />
                 {/* <img
@@ -83,7 +83,7 @@ function Profile() {
               </div>
             </div>
 
-            <div className="flex grid grid-cols-4 margin-pt5rem">
+            <div className="grid grid-cols-4 margin-pt5rem">
               <div className="col-span-1">
                 <FontAwesomeIcon
                   icon={faHeadset}
@@ -95,7 +95,7 @@ function Profile() {
               </div>
             </div>
 
-            <div className="flex grid grid-cols-4 margin-pt5rem">
+            <div className="grid grid-cols-4 margin-pt5rem">
               <div className="col-span-1">
                 <FontAwesomeIcon
                   icon={faUserGroup}

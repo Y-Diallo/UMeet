@@ -2,8 +2,6 @@ import { useContext, useState } from 'react';
 import { browserSessionPersistence, createUserWithEmailAndPassword, setPersistence } from "firebase/auth";
 import { auth, signUp } from "../../../scripts/firebase";
 import { userContext } from '../../../Root';
-
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../scripts/colors.tsx';
 import { useNavigate } from 'react-router-dom';
 
 type SignUpProps = {
@@ -14,7 +12,7 @@ function SignUp({setNeedSignUp}: SignUpProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
-	const { user, setUser } = useContext(userContext);
+	const { setUser } = useContext(userContext);
   const navigate = useNavigate();
   const handleSignUp = (event : any) => {
     event.preventDefault();
@@ -50,12 +48,12 @@ function SignUp({setNeedSignUp}: SignUpProps) {
       })
       .catch((error) => {
         // Handle errors
+        console.warn(error);
       });
     })
     .catch((error) => {
       // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      console.warn(error);
     });
     
   };

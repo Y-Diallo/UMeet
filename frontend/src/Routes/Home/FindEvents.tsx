@@ -84,7 +84,7 @@ function FindEvents() {
                 </div>
             </div>
         </div>
-        {eventDetails.map((eventDetails, index) => (
+        {eventDetails.map((eventDetails) => (
             <EventCard event={eventDetails} />
         ))}
     </div>  

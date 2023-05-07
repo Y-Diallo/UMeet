@@ -3,7 +3,7 @@
     "source": "functions"
   },
   "hosting": {
-    "public": "UMeet/dist",
+    "public": "frontend/dist",
     "ignore": [
       "firebase.json",
       "**/.*",

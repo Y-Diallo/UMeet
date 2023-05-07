@@ -2,11 +2,10 @@ import { signOut } from "firebase/auth";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../../Root";
-import { PRIMARY_COLOR, SECONDARY_COLOR } from "../../../scripts/colors";
 import { auth } from "../../../scripts/firebase";
 
 function SignOutButton() {
-  const { user, setUser } = useContext(userContext);
+  const { setUser } = useContext(userContext);
   const navigate = useNavigate();
   const handleSignOut = () => {
     signOut(auth)
@@ -18,6 +17,7 @@ function SignOutButton() {
       })
       .catch((error) => {
         // Handle errors
+        console.warn(error);
       });
   };
 

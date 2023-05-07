@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
-import TimePicker from 'react-time-picker';
 import "react-datepicker/dist/react-datepicker.css";
 import { EventDetails } from "../../scripts/types";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { createEvent, storage } from "../../scripts/firebase";
 import { userContext } from "../../Root";
 import { v4 as uuidv4 } from 'uuid';
@@ -67,7 +66,7 @@ function HostEventForm() {
         }, 
         (error) => {
             // Handle unsuccessful uploads
-            console.warn("upload failed")
+            console.warn("upload failed", error)
         }, () => {
             // Handle successful uploads on complete
             // For instance, get the download URL: https://firebasestorage.googleapis.com/...

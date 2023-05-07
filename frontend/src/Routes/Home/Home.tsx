@@ -14,9 +14,9 @@ function Home() {
     const [name, setName] = useState<string>("Alexander Hoff")
     const [profilePicture, setProfilePicture] = useState<string>("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80")
     const [joinedEvents, setJoinedEvents] = useState<EventDetails[]>([defaultEvents[2]])
-    const [popularEventDetails, setPopularEventDetails] = useState<EventDetails[]>([
+    const [popularEventDetails, ] = useState<EventDetails[]>([
         defaultEvents[0],defaultEvents[1]]);
-    const [recommendedEventDetails, setRecommendedEventDetails] = useState<EventDetails[]>([
+    const [recommendedEventDetails, ] = useState<EventDetails[]>([
         defaultEvents[2],defaultEvents[3]]);
     
     const {user} = useContext(userContext);
@@ -59,17 +59,17 @@ function Home() {
             <div className="text-left m-0">
                 <PersonalizedHeader name={name} profilePicture={profilePicture} />
                 {joinedEvents.length != 0 ? <EventTypeHeader name="Joined Events" type="joined"/>: null}
-                {joinedEvents.map((eventDetails, index) => (
+                {joinedEvents.map((eventDetails) => (
                     <EventCard event={eventDetails} />
                 ))}
 
                 <EventTypeHeader name="Popular Events" type="popular"/>
-                {popularEventDetails.map((eventDetails, index) => (
+                {popularEventDetails.map((eventDetails) => (
                     <EventCard event={eventDetails} />
                 ))}
                 
                 <EventTypeHeader name="Nearby Events" type="nearby"/>
-                {recommendedEventDetails.map((eventDetails, index) => (
+                {recommendedEventDetails.map((eventDetails) => (
                     <EventCard event={eventDetails} />
                 ))}
             </div>

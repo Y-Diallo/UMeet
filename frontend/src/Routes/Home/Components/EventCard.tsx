@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { EventDetails } from "../../../scripts/types";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +18,7 @@ function EventCard({event}: EventCardProps) {
         <div onClick={()=>handleCardClick()}>
             {/* Card 1 */}
             <a
-            className="block rounded-lg p-1 shadow-sm shadow-indigo-100 bg-white shadow-md mt-6 pt-40"
+            className="block rounded-lg p-1 shadow-indigo-100 bg-white shadow-md mt-6 pt-40"
             style={{
                 backgroundImage: `url('${event.image}')`,
                 backgroundSize: "cover",

@@ -4,7 +4,7 @@ import { faUser, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Settings() {
-  const [profilePicture, setProfilePicture] = useState<string>(
+  const [profilePicture, ] = useState<string>(
     "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
   );
   return (

@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import { browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../scripts/firebase';
 import { userContext } from '../../../Root';
-// import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../../scripts/colors';
 import { useNavigate } from 'react-router-dom';
 
 type SignInProps = {
@@ -13,7 +12,7 @@ function SignIn({setNeedSignUp}: SignInProps) {
   //https://flowbite.com/blocks/marketing/login/
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-	const { user, setUser } = useContext(userContext);
+	const { setUser } = useContext(userContext);
   const navigate = useNavigate();
 
   const handleSignIn = (event : any) => {
@@ -33,12 +32,12 @@ function SignIn({setNeedSignUp}: SignInProps) {
       })
       .catch((error) => {
         // Handle errors
+        console.warn(error);
       });
     })
     .catch((error) => {
       // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      console.warn(error);
     });
     
   };
