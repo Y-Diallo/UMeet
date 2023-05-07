@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-// import { randomUUID } from "crypto";
+import { randomUUID } from "crypto";
 // // Start writing functions
 // // https://firebase.google.com/docs/functions/typescript
 //
@@ -105,41 +105,32 @@ exports.createEvent = functions.https.onCall((data : any, context : any) => {
   } catch (e) {
     functions.logger.info(e);
   }
-  const newId = crypto.randomUUID();
-  const event : {
-    id: string;
-    title: string;
-    hostId: string;
-    attendees: number;
-    maxAttendees: number;
-    image: string;
-    image2?: string;
-    location: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-  } = data.event;
-  //check if the user already exists
-  //if the user does not exist, create them
-  admin.database().ref('/event/' + newId).set({
+  const newId = randomUUID();
+  admin.database().ref('/events/' + newId).set({
     id: newId,
-    title: event.title,
+    title: data.event.title,
     hostId: context.auth.uid,
     attendees: 0,
-    maxAttendees: event.maxAttendees,
-    image: event.image,
-    image2: event.image2,
-    location: event.location,
-    startDate: event.startDate,
-    endDate: event.endDate,
-    description: event.description,
-    enrolledUsers: null,
+    maxAttendees: data.event.maxAttendees,
+    image: data.event.image,
+    image2: data.event.image2,
+    location: data.event.location,
+    startDate: data.event.startDate,
+    endDate: data.event.endDate,
+    description: data.event.description,
+    enrolledUsers: {
+      [context.auth.uid]: context.auth.uid,
+    },
   });
   //add the event to the user's hosted events
   admin.database().ref('/users/' + context.auth.uid + "/hostedEvents/" + newId).set(newId);
-  //add the user to the event's enrolled users
-  admin.database().ref('/events/' + newId + "/enrolledUsers/" + context.auth.uid).set(context.auth.uid);
-  return true;
+  //add the event to the user's enrolled events
+  admin.database().ref('/users/' + context.auth.uid + "/enrolledEvents/" + newId).set(newId);
+  //increment the number of users enrolled in the event
+  admin.database().ref('/events/' + newId + "/attendees").transaction((currentValue) => {
+    return currentValue + 1;
+  });
+  return data;
 
 });
 

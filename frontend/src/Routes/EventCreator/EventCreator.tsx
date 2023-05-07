@@ -2,26 +2,15 @@ import { useState } from "react";
 import { defaultEvents } from "../../scripts/defaultData";
 import { EventDetails } from "../../scripts/types";
 import { createEvent } from "../../scripts/firebase";
+import { useNavigate } from "react-router-dom";
 
-/**
- * 
- * @returns EventDetails = {
-    id: string;
-    title: string;
-    hostId: string;
-    attendees: number;
-    maxAttendees: number;
-    image: string;
-    image2?: string;
-    location: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-}
- */
 function EventCreator() {
     const [eventDetails, setEventDetails] = useState<EventDetails>(defaultEvents[0]);
-    //update the respective fields in eventDetails
+    const navigate = useNavigate();
+    const createNewEvent = () => {
+        console.warn(createEvent({event:eventDetails}))
+        navigate(`/event_details/${eventDetails.id}`);
+    }
     return ( 
     <div className="mx-6 mb-24">
         <h1 className="text-3xl font-bold text-purple-900 mt-10">Host Event</h1>
@@ -50,7 +39,7 @@ function EventCreator() {
             <label className="text-lg font-bold text-purple-900 mt-10">Event Splash Image</label>
             <input onChange={(e)=>setEventDetails({...eventDetails, image2:e.target.value})} className="border-2 border-purple-900 rounded-lg p-2" type="url" placeholder="Event Image 2" />
 
-            <button onClick={()=>createEvent({event:eventDetails})} className="bg-purple-900 text-white rounded-lg p-2 mt-10">Create Event</button>
+            <button onClick={()=> createNewEvent()} className="bg-purple-900 text-white rounded-lg p-2 mt-10">Create Event</button>
         </div>
     </div>
     );
