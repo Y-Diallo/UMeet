@@ -35,10 +35,10 @@ The combination of React with TypeScript and Firebase as our database will allow
 ## Future
 
 
-- To assist organizers in creating event descriptions by suggesting relevant details using AI during the registration process.
+- To assist organizers in creating event descriptions by suggesting relevant details using AI during the event creation process.
 - Adding more social elements: The platform might be improved with more social features, such messaging, chat, and group creation, in order to promote a sense of community and collaboration on a deeper level.
 - Enhancing user feedback systems: More effective feedback mechanisms could be created to gather comments and suggestions for improvement in order to make sure the platform is meeting the needs and expectations of users.
 
  
-
- 
+# Extra Links
+ [UI Design](https://app.visily.ai/projects/d60d430e-a772-4297-8226-954158d5a5c7/boards/475393)
