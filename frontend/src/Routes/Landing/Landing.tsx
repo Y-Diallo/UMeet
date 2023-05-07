@@ -8,10 +8,10 @@ function Landing() {
       <FontAwesomeIcon
         icon={faLink}
         size="lg"
-        className="mr-2 mt-12 ml-5"
+        className="mr-2 mt-20 ml-5"
         color="#B7A57A"
       />
-      <div className="mt-11">
+      <div className="mt-20">
         <h1 className="text-xl font-bold font-sans text-[#BCC1CA]">
           Husky Links
         </h1>
@@ -33,6 +33,11 @@ function Landing() {
           </button>
           <a className="text-[#BCC1CA] font-light ml-2">No account?</a>
         </div>
+        <img
+    src="https://uw-s3-cdn.s3.us-west-2.amazonaws.com/wp-content/uploads/sites/98/2014/10/07214236/W-Logo_Gold_RGB.png"
+    alt="logo"
+    className="absolute bottom-0 left-0 w-50 h-50"
+  />
       </div>
     </div>
   );

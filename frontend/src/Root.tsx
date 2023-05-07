@@ -17,7 +17,7 @@ function Root() {
     return ( 
     <userContext.Provider value={{user, setUser}}>
       <BrowserRouter>
-        <Navbar />
+      {location.pathname !== '/' && <Navbar />}
         <Routes>
           <Route path="*" element={<Landing/>}/>
           <Route path="/login" element={<LoginSignUp/>}/>
